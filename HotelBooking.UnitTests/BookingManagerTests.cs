@@ -66,6 +66,10 @@ namespace HotelBooking.UnitTests
             // Assert
             Assert.Empty(bookingForReturnedRoomId);
         }
+        //---------------- Our tests -----------------
 
+        //Moq
+
+        //Data-driven tests
     }
 }
