@@ -50,7 +50,6 @@ namespace HotelBooking.UnitTests
         [Fact]
         public async Task FindAvailableRoom_RoomAvailable_ReturnsAvailableRoom()
         {
-            // This test was added to satisfy the following test design
             // principle: "Tests should have strong assertions".
 
             // Arrange
