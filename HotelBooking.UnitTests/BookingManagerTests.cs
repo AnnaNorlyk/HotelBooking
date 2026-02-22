@@ -71,5 +71,30 @@ namespace HotelBooking.UnitTests
         //Moq
 
         //Data-driven tests
+
+        [Theory]
+        [InlineData(-1, 5)]  // start in past
+        [InlineData(5, 3)]   // start after end
+        [InlineData(-2, -1)] // both dates in past
+        public async Task FindAvailableRoom_InvalidDates_ThrowsArgumentException(int startOffset,int endOffset)
+        {
+            // Arrange
+            var bookingRepoMock = new Mock<IRepository<Booking>>();
+            var roomRepoMock = new Mock<IRepository<Room>>();
+
+            var manager = new BookingManager(
+                bookingRepoMock.Object,
+                roomRepoMock.Object);
+
+            var startDate = DateTime.Today.AddDays(startOffset);
+            var endDate = DateTime.Today.AddDays(endOffset);
+
+            // Act
+            Func<Task> act = () => manager.FindAvailableRoom(startDate, endDate);
+
+            // Assert
+            await Assert.ThrowsAsync<ArgumentException>(act);
+        }
+    }
     }
 }
