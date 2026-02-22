@@ -324,7 +324,7 @@ namespace HotelBooking.UnitTests
             Assert.Equal(end.Date, result.Last().Date);
         }
 
-        //Data-driven tests
+        //Data-driven test inline
 
         [Theory]
         [InlineData(-1, 5)]  // start in past
@@ -350,5 +350,5 @@ namespace HotelBooking.UnitTests
             await Assert.ThrowsAsync<ArgumentException>(act);
         }
     }
-    }
+    
 }
